@@ -1,0 +1,8 @@
+{
+  "sources": [],
+  "cloud_save": {
+    "mode": "ask",
+    "provider": "yuque_mcp",
+    "repo_id": "your-account/your-book"
+  }
+}

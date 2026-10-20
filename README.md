@@ -1,6 +1,6 @@
 # 面试复盘 Skill
 
-把真实或模拟面试中的回答整理成有原话依据的反馈、准备清单和下一次练习。支持文字直接复盘、本地音视频转写，以及可选的个人简历、语雀MCP、飞书CLI知识增强。
+把真实或模拟面试中的回答整理成有原话依据的反馈、准备清单和下一次练习。支持文字直接复盘、本地音视频转写，以及可选的个人简历、语雀MCP、飞书CLI知识增强。报告完成后，还可以保存到你自己的语雀知识库或飞书云文档；固定目标授权一次，后续可自动归档并返回链接。
 
 ## 一句话让你的 Agent 安装（推荐）
 
@@ -24,7 +24,7 @@ Agent 会按自己的环境选择安装位置，安装后用内置模拟问答�
 
 ## 手动安装（备用）
 
-1. 打开[最新版本下载页](https://github.com/Teng-Yii/interview-recap-skill/releases/latest)，下载Release附件中的`interview-recap-skill-v0.1.1.zip`并解压，得到`interview-recap`文件夹。
+1. 下载[当前 main 分支的完整 Skill 压缩包](https://github.com/Teng-Yii/interview-recap-skill/archive/refs/heads/main.zip)并解压，将最外层的`interview-recap-skill-main`文件夹改名为`interview-recap`。已有版本发行包也可从[Releases](https://github.com/Teng-Yii/interview-recap-skill/releases)获取；本页当前流程以 main 分支为准。
 2. 将整个文件夹放入Agent支持的skills目录。Codex可使用`~/.agents/skills/interview-recap/`或`~/.codex/skills/interview-recap/`；Claude Code可使用`~/.claude/skills/interview-recap/`。已有同名技能时保留原版，选择项目级安装或先确认替换方式。其他Agent按其技能安装说明操作。
 3. 按宿主要求重新加载或在下一轮对话使用技能；未自动识别时，让Agent直接读取安装目录里的`SKILL.md`。
 
@@ -57,8 +57,25 @@ python3 scripts/prepare.py examples/interview.txt --resume examples/resume.md --
 | 本地项目笔记 | `--config`指定自己选择的文件，示例见`config/local.example.json` |
 | 语雀MCP | 已连接的Agent可直接用；独立桥接需`requirements-mcp.txt`，配置见[知识源说明](references/knowledge-sources.md) |
 | 飞书CLI | 用户自行安装并认证官方`@larksuite/cli`，读取指定文档；同见知识源说明 |
+| 保存复盘到云端 | Agent通过自己的语雀MCP或飞书CLI创建笔记、读回核对并返回链接；见[云端保存](references/cloud-save.md) |
 
 语雀和飞书可以同时配置，也可以都不配置。脚本只读取明确选定的文档；读取失败会记录警告，基础复盘继续，不冒充已经读取。没有内置用户Token、文档ID或作者私人资料。
+
+## 自动保存到自己的语雀或飞书
+
+配置好自己的语雀 MCP 或完成飞书 CLI 登录后，可以直接对 Agent 说：
+
+> 使用面试复盘 Skill 处理这份录音，生成报告后保存到我指定的语雀知识库，最后给我文档链接。
+
+或者一次设置后持续使用：
+
+> 以后面试复盘完成后，都自动保存到我的飞书个人云空间，保留本地报告，最后给我文档链接。
+
+Agent 会先生成报告，再用你自己的连接新建云端文档，读回核对后返回链接。也可指定飞书文件夹或 Wiki 父节点；只提供用于参考的项目笔记，不会自动覆盖它。
+
+配置示例：[`语雀保存`](config/cloud-save.yuque.example.json)、[`飞书保存`](config/cloud-save.feishu.example.json)。`cloud_save`由Agent读取执行，支持`off`、`ask`、`auto`；`auto`用于你已经明确授权的固定保存范围。真实配置放在仓库之外，Token保留在自己的MCP或CLI认证中。[查看完整配置与保存流程](references/cloud-save.md)。
+
+云端保存需要当前Agent具备相应MCP/CLI调用能力及目标写权限；`prepare.py`仍只负责准备复盘材料。没有云知识库也能正常使用本地复盘。
 
 ## 报告会交付什么
 
@@ -68,7 +85,7 @@ python3 scripts/prepare.py examples/interview.txt --resume examples/resume.md --
 - 标明是新练习的连续追问，以及最多三个下一次准备事项。
 - 提供简历时才给简历对照建议；附读取范围和校对事项。
 
-不预测录用结果，不按一个分数定义能力。使用前确认自己有权处理材料；录音转写在本地运行，但Agent分析可能调用云端模型，不承诺全流程离线。不会自动将个人资料发布到GitHub、语雀或飞书，也不会写入作者记忆。输出和转写由用户保管，本Skill不自动删除原材料。
+不预测录用结果，不按一个分数定义能力。使用前确认自己有权处理材料；录音转写在本地运行，但Agent分析可能调用云端模型，不承诺全流程离线。只有获得你的保存授权后，才将完成的报告存到你指定的云端位置；不上传到作者账号、不公开发布到GitHub、不自动修改知识源或写入作者记忆。输出和转写由用户保管，本Skill不自动删除原材料。
 
 ## 开发和验证
 
@@ -86,7 +103,8 @@ python3 -m unittest discover -s tests -v
 ## 获取与许可
 
 - GitHub：https://github.com/Teng-Yii/interview-recap-skill
-- 版本下载：https://github.com/Teng-Yii/interview-recap-skill/releases/latest
+- 当前完整Skill下载：https://github.com/Teng-Yii/interview-recap-skill/archive/refs/heads/main.zip
+- 历史版本：https://github.com/Teng-Yii/interview-recap-skill/releases
 - 作者：一腾。公众号：一腾的成长笔记。
 
 MIT License，见[LICENSE](LICENSE)。本仓库不分发第三方CLI、MCP服务器或模型权重；各自许可与使用条件以其项目为准。

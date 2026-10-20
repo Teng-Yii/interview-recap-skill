@@ -1,0 +1,9 @@
+{
+  "sources": [],
+  "cloud_save": {
+    "mode": "ask",
+    "provider": "feishu_cli",
+    "identity": "user",
+    "parent_position": "my_library"
+  }
+}
