@@ -2,19 +2,31 @@
 
 把真实或模拟面试中的回答整理成有原话依据的反馈、准备清单和下一次练习。支持文字直接复盘、本地音视频转写，以及可选的个人简历、语雀MCP、飞书CLI知识增强。
 
-**没有语雀或飞书账号也能用。** 这是给Agent使用的Skill，配有材料整理脚本；不是双击即运行的网页，也不是小程序。基础文字模式不需要额外模型API Key，分析使用你自己的Agent及其模型服务，相关额度/费用依服务而定。
+## 一句话让你的 Agent 安装（推荐）
 
-## 安装与第一次使用
+把下面这一句话复制给 Codex、Claude Code 或其他支持本地工具和技能安装的 Agent：
 
-1. 下载本仓库Release中的`interview-recap-skill-v0.1.0.zip`并解压，得到`interview-recap`文件夹。
-2. 将整个文件夹放入Agent支持的skills目录。Codex可使用`~/.agents/skills/interview-recap/`或`~/.codex/skills/interview-recap/`；Claude Code可使用`~/.claude/skills/interview-recap/`。已有同名个人版时，先备份并选择项目级安装，避免覆盖。其他Agent按其技能安装说明操作。
-3. 重新加载技能后，让Agent使用`interview-recap`复盘你提供的问答。不同宿主的触发方式不同，也可直接让Agent读取`SKILL.md`。
+> 请帮我安装这个面试复盘 Skill：https://github.com/Teng-Yii/interview-recap-skill ，按你当前 Agent 的技能安装方式完成安装，保留已有同名技能，并用仓库里的模拟问答跑通一次基础复盘。
 
-可以直接说：
+Agent 会按自己的环境选择安装位置，安装后用内置模拟问答验证。你不需要先手动找技能目录、下载ZIP，或配置语雀和飞书。**请在能下载文件、写入本地技能目录的Agent中使用；普通网页聊天窗口不一定具备安装能力。**
 
-> 使用面试复盘Skill。以下是我的模拟回答：面试官问“你怎么证明缓存优化有效”，我回答“应该快很多，但没测过”。请引用原句指出缺口，不补造数据，给出下一步验证方法。我没有简历和个人知识库。
+如果Agent需要安装步骤，让它继续读取[安装与首次验证说明](references/installation.md)。同名个人版先保留，避免覆盖。宿主若需下一轮对话或重新加载才能发现新技能，按其提示操作；也可以先让Agent直接读取已安装的`SKILL.md`完成样例。
 
-Agent应该指出“效果没有测量依据”，帮助你准备可比的测试，而不是替你写“耗时下降80%”。
+## 安装后怎么用
+
+第一轮可以直接把问题和自己的回答发给Agent：
+
+> 使用面试复盘Skill。面试官问“你怎么证明缓存优化有效”，我回答“应该快很多，但没测过”；请引用原句指出缺口，不补造数据，给出下一步验证方法，我没有简历和个人知识库。
+
+也可以把自己的文字文件、录音或视频路径交给Agent，让它按Skill处理。先跑文字即可；音视频需要额外转写依赖，语雀和飞书是可选增强，等需要时再由Agent协助配置。登录、授权或环境缺失时，Agent应说明需要你完成什么，不能伪称已经装好或读过资料。
+
+**没有语雀或飞书账号也能用。** 基础文字模式不需要额外模型API Key，分析使用你自己的Agent及其模型服务，额度和费用依服务而定。Skill不是双击即运行的网页或小程序。
+
+## 手动安装（备用）
+
+1. 打开[最新版本下载页](https://github.com/Teng-Yii/interview-recap-skill/releases/latest)，下载Release附件中的`interview-recap-skill-v0.1.1.zip`并解压，得到`interview-recap`文件夹。
+2. 将整个文件夹放入Agent支持的skills目录。Codex可使用`~/.agents/skills/interview-recap/`或`~/.codex/skills/interview-recap/`；Claude Code可使用`~/.claude/skills/interview-recap/`。已有同名技能时保留原版，选择项目级安装或先确认替换方式。其他Agent按其技能安装说明操作。
+3. 按宿主要求重新加载或在下一轮对话使用技能；未自动识别时，让Agent直接读取安装目录里的`SKILL.md`。
 
 ## 跑一个完整公开样例
 

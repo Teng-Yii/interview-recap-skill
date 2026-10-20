@@ -7,6 +7,14 @@ description: Use when a user wants to review a real or practice interview from a
 
 帮助用户把一次真实或模拟面试变成下一次可执行的准备。只使用这位用户本次提供的材料，不需要作者账号、简历、私人笔记或记忆。
 
+## 一句话安装与首次体验
+
+用户询问安装方法时，可直接复制给支持本地工具的Agent：
+
+> 请帮我安装这个面试复盘 Skill：https://github.com/Teng-Yii/interview-recap-skill ，按你当前 Agent 的技能安装方式完成安装，保留已有同名技能，并用仓库里的模拟问答跑通一次基础复盘。
+
+执行安装或首次验证时读取[安装说明](references/installation.md)。先完成无账号的模拟文字复盘，再按需要处理媒体、简历或知识源；不要把可选功能变成安装前提。已安装后进入正常复盘，不重复要求用户执行安装。
+
 ## 选择输入
 
 - 已有文字、SRT或TSV：直接分析，不强制转写。
