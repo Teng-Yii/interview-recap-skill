@@ -1,0 +1,5 @@
+{
+  "sources": [
+    {"type": "local", "path": "../examples/project-notes.md", "title": "模拟项目事实", "purpose": "personal_facts"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "sources": [
+    {
+      "type": "mcp",
+      "command": "npx",
+      "args": ["--yes", "yuque-mcp@1.0.0"],
+      "env_vars": {"YUQUE_TOKEN": "YUQUE_TOKEN", "YUQUE_PERSONAL_TOKEN": "YUQUE_TOKEN"},
+      "tool": "yuque_get_doc",
+      "arguments": {"repo_id": "your-account/your-book", "doc_id": "your-doc-slug"},
+      "title": "我指定的项目笔记",
+      "purpose": "personal_facts",
+      "timeout_seconds": 90
+    }
+  ]
+}

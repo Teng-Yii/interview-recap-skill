@@ -1,0 +1,2 @@
+# Optional: only the standalone MCP bridge needs this.
+mcp>=1.10,<2

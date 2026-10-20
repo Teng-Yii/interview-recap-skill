@@ -1,0 +1,13 @@
+{
+  "sources": [
+    {
+      "type": "feishu_cli",
+      "command": "lark-cli",
+      "identity": "user",
+      "doc": "https://your-tenant.feishu.cn/docx/your-document-token",
+      "title": "我指定的飞书项目文档",
+      "purpose": "personal_facts",
+      "timeout_seconds": 60
+    }
+  ]
+}
